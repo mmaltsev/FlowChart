@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <title>Chart - FlowChart</title>
+    <link rel="stylesheet" type="text/css" href="css/chart.css">
+    <link rel="icon" type="image/png" href="img/favicon.ico">
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="js/axios.min.js"></script>
+    <script src="js/chart.js"></script>
+  </head>
+  <body>
+    <div id="content" class="content"></div>
+    <div class="menu">
+      <div id="save" class="save" onclick="saveClick()">Save</div>
+      <div class="menu-row">
+        <div id="block-plus-button" class="menu-element" onclick="blockPlusClick()">
+          <img src="img/block-plus.png" style="width: 19px;" title="add block" />
+        </div>
+        <div id="line-plus-button" class="menu-element" onclick="linePlusClick()">
+          <img src="img/line-plus.png" style="width: 20px;" title="add link" />
+        </div>
+      </div>
+      <div class="menu-row">
+        <div id="block-minus-button" class="menu-element" onclick="blockMinusClick()">
+          <img src="img/block-minus.png" style="width: 19px;" title="delete block" />
+        </div>
+        <div id="line-minus-button" class="menu-element" onclick="lineMinusClick()">
+          <img src="img/line-minus.png" style="width: 20px;" title="delete link" />
+        </div>
+      </div>
+      <div class="menu-row">
+        <div id="block-edit" class="menu-element" onclick="blockEdit()">
+          <img src="img/pencil.png" style="width: 19px;" title="edit block info" />
+        </div>
+        <div id="grid" class="menu-element" onclick="gridOutline()">
+          <img src="img/grid.png" style="width: 20px;" title="add/remove grid" />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

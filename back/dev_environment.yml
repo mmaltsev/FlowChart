@@ -1,0 +1,7 @@
+name: FlowChart
+dependencies:
+- python=3.6
+- pip:
+    - Flask
+    - gevent
+    - git+https://github.com/ansrivas/pylogging.git

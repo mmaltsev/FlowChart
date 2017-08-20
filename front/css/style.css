@@ -1,0 +1,97 @@
+.charts-table {
+  border-collapse: collapse;
+  width: 500px;
+}
+
+.charts-table tr a {
+  text-decoration: none;
+  color: black;
+}
+
+/* Header of the table */
+.charts-table tr:nth-child(1) {
+  background-color: #888;
+  color: white;
+}
+
+.charts-table tr:hover {
+  background-color: #f8f8f8;
+  cursor: pointer;
+}
+
+/* Prevents hover effect for header */
+.charts-table tr:nth-child(1):hover {
+  background-color: #888;
+  cursor: initial;
+}
+
+/* Outlines separaters in table */
+.charts-table th, td {
+  border-bottom: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+/* Styling for cells with Names */
+.charts-table td:nth-child(1) {
+  width: 134px;
+}
+
+/* Styling for cells with Descriptions */
+.charts-table td:nth-child(2) {
+  width: 294px;
+}
+
+/* Styling for cells with Edit and Delete icons */
+.charts-table td:nth-child(3), th:nth-child(3),
+ td:nth-child(4), th:nth-child(4) {
+  border-bottom: 1px solid white;
+  background-color: white;
+  padding: 5px;
+  width: 16px;
+  cursor: initial;
+}
+
+.icon {
+  cursor: pointer;
+  width: 16px;
+}
+
+.new-chart-button {
+  margin-top: 10px;
+  margin-left: 330px;
+  background-color: #4CAF50;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 10px 18px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.new-chart-button:hover {
+  background-color: #4a9e4d;
+}
+
+.edit-td {
+  padding: 0;
+}
+
+.name-input {
+  height: 34px;
+  padding-left: 6px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 16px;
+  width: 146px;
+}
+
+.desc-input {
+  height: 34px;
+  padding-left: 6px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 16px;
+  width: 302px;
+}
