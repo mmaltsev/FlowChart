@@ -19,7 +19,7 @@ window.onload = function() {
 function getData() {
     axios({
     method:'get',
-    url:'../data/charts.json',
+    url:'/data/flows',
     responseType:'json'
   })
     .then(function(response) {

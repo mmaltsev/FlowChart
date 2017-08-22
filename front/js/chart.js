@@ -82,7 +82,7 @@ function getTitle() {
   let id = globalChartId
   axios({
     method:'get',
-    url:'../data/charts.json',
+    url:'/data/flows',
     responseType:'json'
   })
     .then(function(response) {
@@ -101,7 +101,7 @@ function getData() {
   let id = globalChartId
   axios({
     method:'get',
-    url:'../data/chart_data/' + id + '.json',
+    url:'/data/' + id,
     responseType:'json'
   })
     .then(function(response) {

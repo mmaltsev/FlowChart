@@ -39,28 +39,20 @@ def chart(path):
         return send_from_directory(path_prefix, path)
 
 
-@app.route('/<path:path>')
-def send_static(path):
-    """Server static files."""
-    logger.info("route: {}".format(path))
-    path_prefix = '../../front'
-    return send_from_directory(path_prefix, path)
-
-
 @app.route('/post/charts', methods=['POST'])
 def post_charts():
     logger.info('route: /post/charts')
     data = request.get_json()['json']
     message = request.get_json()['message']
     flow_id = request.get_json()['id']
-    with open('../front/data/charts.json', 'w') as outfile:
+    with open('../data/charts.json', 'w') as outfile:
         json.dump(data, outfile, indent = 2)
     if message == 'add':
         temp = {}
         temp['nodes'] = []
         temp['links'] = []
         print('add: ', temp)
-        with open('../front/data/chart_data/{}.json'.format(flow_id), 'w') as outfile:
+        with open('../data/chart_data/{}.json'.format(flow_id), 'w') as outfile:
             json.dump(temp, outfile, indent = 2)
     return 'Succesful update.'
 
@@ -70,9 +62,32 @@ def post_chart_data():
     logger.info('route: /post/charts')
     data = request.get_json()['json']
     chartId = request.get_json()['id']
-    with open('../front/data/chart_data/{}.json'.format(chartId), 'w') as outfile:
+    with open('../data/chart_data/{}.json'.format(chartId), 'w') as outfile:
         json.dump(data, outfile, indent = 2)
     return 'Succesful update.'
+
+
+@app.route('/data/<path:path>')
+def data(path):
+    logger.info('route: /data')
+    if path.isdigit():
+        path_prefix = '../../data/chart_data'
+        path = path + '.json'
+        return send_from_directory(path_prefix, path)
+    elif path == 'flows':
+        path_prefix = '../../data'
+        path = 'charts.json'
+        return send_from_directory(path_prefix, path)
+    else:
+        path_prefix = '../../data'
+        return send_from_directory(path_prefix, path)
+
+@app.route('/<path:path>')
+def send_static(path):
+    """Server static files."""
+    logger.info("route: {}".format(path))
+    path_prefix = '../../front'
+    return send_from_directory(path_prefix, path)
 
 
 def main():
