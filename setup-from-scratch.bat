@@ -5,12 +5,11 @@ CALL git pull
 
 ECHO.-----Updating node_modules-----
 cd front
-CALL npm i
 
 ECHO.-----Starting the server-----
 cd ..\back
 CALL conda env create -f dev_environment.yml
-CALL activate SpaceAtlas
+CALL activate FlowChart
 python run.py
 
 ECHO ON

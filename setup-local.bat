@@ -5,7 +5,7 @@ CALL git pull
 
 ECHO.-----Starting the server-----
 cd ..\back
-CALL activate SpaceAtlas
+CALL activate FlowChart
 python run.py
 
 ECHO ON

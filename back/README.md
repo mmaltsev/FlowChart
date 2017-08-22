@@ -4,7 +4,7 @@ Enable [Anaconda 3](https://www.continuum.io/downloads).
 
 ```
 $ conda env create -f dev_environment.yml
-$ source activate SpaceAtlas
+$ source activate FlowChart
 ```
 Change the hostname and port in backend/config.py if neccessary. By default, `hostname = localhost`, `port = 5555`.
 
