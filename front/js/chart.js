@@ -12,7 +12,7 @@ var globalIsGrid = false
 var globalEditFirstTouch = false
 var globalEditId = -1
 var globalIdsToConnect = []
-var gridStep = 10
+var gridStep = 20
 
 /**
  * Enter point of the chart.html file.
@@ -121,16 +121,52 @@ function drawSVG() {
   let baseMarginY = 10
   let nodeHeadTextMarginX = 5
   let nodeHeadTextMarginY = 15
-  let linkMarginX = 35
   let linkBottomMarginY = 60
-  let nodeWidth = 70
+  let nodeWidth = 100
+  let linkMarginX = nodeWidth / 2
   let nodeHeadHeight = 20
-  let nodeBaseHeight = 50
+  let nodeBaseHeight = 70
 
   dataToGridForm()
   data = globalChartData
   d3.selectAll("g").remove()
   d3.selectAll("line").remove()
+
+  if (globalIsGrid) {
+    width = window.innerWidth
+    height = window.innerHeight
+    var x = d3.scaleLinear().range([0, width]);
+    var y = d3.scaleLinear().range([0, height]);
+
+    // gridlines in x axis function
+    function make_x_gridlines() {		
+      return d3.axisBottom(x)
+          .ticks(160)
+    }
+
+    // gridlines in y axis function
+    function make_y_gridlines() {		
+      return d3.axisLeft(y)
+          .ticks(160)
+    }
+
+    // add the X gridlines
+    svg.append("g")			
+      .attr("class", "grid")
+      .attr("transform", "translate(0," + height + ")")
+      .call(make_x_gridlines()
+          .tickSize(-height)
+          .tickFormat("")
+      )
+
+    // add the Y gridlines
+    svg.append("g")			
+      .attr("class", "grid")
+      .call(make_y_gridlines()
+          .tickSize(-width)
+          .tickFormat("")
+      )
+  }
 
   // Dragging functionality
   var drag = d3.drag()
@@ -189,7 +225,30 @@ function drawSVG() {
       if (globalIsLineMinusClick) {
         deleteLink(i)
       }
+    })
+    .on("mouseover", function(d, i) {
+      if (globalIsLineMinusClick) {
+        d3.select(this)
+          .attr("stroke", "gray")
+          .attr("opacity", 0.2)
+      }
+    })
+    .on("mouseout", function(d, i) {
+      if (globalIsLineMinusClick) {
+        d3.select(this)
+          .attr("stroke", "gray")
+          .attr("opacity", 1)
+      }
     });
+
+  let arc = d3.symbol().type(d3.symbolTriangle)
+    .size(100)
+  links.append('path')
+    .attr("d", arc)
+    .attr("fill", "gray")
+    .attr("stroke", "#000")
+    .attr("stroke-width", 1)
+    .attr('transform', "translate(20, 20)");
   
   // Nodes outlining
   var nodes = svg.selectAll("node")
@@ -215,6 +274,7 @@ function drawSVG() {
                     .append('input')
                     .attr('class', 'tooltip')
                     .attr('id', 'edit-input')
+                    .attr('maxlength', '11')
                     .on("click", function() {
                       globalEditFirstTouch = true
                     });
@@ -423,9 +483,5 @@ function gridOutline() {
   } else {
     gridButton.className = "menu-element"
   }
-  if (globalIsGrid) {
-    console.log('here comes the grid!')
-  } else {
-    console.log('here it goes away!')
-  }
+  drawSVG()
 }

@@ -1,3 +1,19 @@
 {
-  "charts": [  ]
+  "charts": [
+    {
+      "name": "My new flow",
+      "description": "Some desc",
+      "active": true
+    },
+    {
+      "name": "My second flohhhh",
+      "description": "",
+      "active": true
+    },
+    {
+      "name": "flow2hgh",
+      "description": "ghggjjjj",
+      "active": true
+    }
+  ]
 }
