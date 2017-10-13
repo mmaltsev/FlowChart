@@ -118,7 +118,7 @@ function getData() {
  */
 function drawSVG() {
   // Constants and preprocessing
-  let baseMarginY = 10
+  let baseMarginY = 0
   let nodeHeadTextMarginX = 5
   let nodeHeadTextMarginY = 15
   let linkBottomMarginY = 60
@@ -241,14 +241,14 @@ function drawSVG() {
       }
     });
 
-  let arc = d3.symbol().type(d3.symbolTriangle)
+  /*let arc = d3.symbol().type(d3.symbolTriangle)
     .size(100)
   links.append('path')
     .attr("d", arc)
     .attr("fill", "gray")
     .attr("stroke", "#000")
     .attr("stroke-width", 1)
-    .attr('transform', "translate(20, 20)");
+    .attr('transform', "translate(20, 20)");*/
   
   // Nodes outlining
   var nodes = svg.selectAll("node")
@@ -299,9 +299,11 @@ function drawSVG() {
     })
     .attr("width", nodeWidth)
     .attr("height", nodeBaseHeight)
-    .attr("fill", "lightgray")
+    .attr("stroke", "black")
+    .attr("stroke-width", 1)
+    .attr("fill", "white")
     
-  nodes.append("rect")
+  /*nodes.append("rect")
     .attr("class", "node-head")
     .attr("x", function(d) {
       return d.x
@@ -323,7 +325,7 @@ function drawSVG() {
     })
     .text(function(d) {
       return d.name
-    });
+    });*/
 }
 
 /**
